@@ -19,6 +19,11 @@ nav{display:flex;gap:1.1rem;flex-wrap:wrap}nav a{color:#e5f2f5;font-size:.9rem}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#9fe3dc;font-size:.76rem;font-weight:700}
 h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.04;letter-spacing:-.04em;margin:.6rem 0 1rem;max-width:800px}
 .hero p{font-size:1.15rem;max-width:730px;color:#e1eef3}
+.hero h1,
+.hero h2 {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
 .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.7rem}
 .btn{display:inline-block;border-radius:999px;padding:.72rem 1.15rem;font-weight:700;border:1px solid #ffffff66;color:white}
 .btn.primary{background:#a8eee4;color:#10263f;border-color:#a8eee4}
@@ -59,7 +64,7 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
 <div class="hero" id="home">
   <div class="wrap">
     <div class="eyebrow">Academic & Research Profile</div>
-    <title size="18px" weight="bold"> Sharan Chandran M PhD, PDF | Academic & Research Profile</title>
+    <h2>Dr. Sharan Chandran M <span class="creds">PhD, PDF</span></h2>
     <p>Senior Assistant Professor · Department of Design and Automation<br>School of Mechanical Engineering, VIT Vellore, India</p>
     <p>Mechanical engineering academic and materials researcher working across sustainable composites, additive manufacturing, and student-led engineering innovation.</p>
       <a class="btn primary" href="#research">Explore Research</a>
