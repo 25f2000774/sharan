@@ -49,7 +49,37 @@ ul.clean{padding-left:1.15rem;margin:.5rem 0}ul.clean li{margin:.4rem 0}
 footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3dc}.footer-row{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .note{font-size:.84rem;color:var(--muted)}
 @media(max-width:780px){.nav{align-items:flex-start;flex-direction:column}nav{gap:.7rem}.grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.hero{padding:3.7rem 0 3rem}}
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-text { flex: 1; min-width: 0; }
+
+@media (max-width: 780px) {
+  .hero-inner { flex-direction: column-reverse; text-align: center; }
+  .actions { justify-content: center; }
+}
 @media print{header{position:static}.hero{padding:2rem 0;background:#10263f!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.actions{display:none}body{background:white}.card{box-shadow:none;break-inside:avoid}section{padding:1rem 0}}
+.profile-photo {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #a7f3e6;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.hero h1, .hero h2 { color: #ffffff; }
+.creds { color: #a7f3e6; font-weight: 500; font-size: 0.6em; }
+
+@media (max-width: 800px) {
+  .profile-photo { width: 180px; height: 180px; }
+}
 </style>
 </head>
 <body>
@@ -62,22 +92,22 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
   </div>
 </header>
 <div class="hero" id="home">
-  <div class="wrap">
-    <div class="eyebrow">Academic & Research Profile</div>
-    <h2>Dr. Sharan Chandran M <span class="creds">PhD, PDF</span></h2>
-    <p>Senior Assistant Professor · Department of Design and Automation<br>School of Mechanical Engineering, VIT Vellore, India</p>
-    <p>Mechanical engineering academic and materials researcher working across sustainable composites, additive manufacturing, and student-led engineering innovation.</p>
-      <a class="btn primary" href="#research">Explore Research</a>
-      <a class="btn" href="https://www.amazon.in/Self-Reinforced-Polymer-Composites-Engineering-Technology/dp/311064729X" target="_blank" rel="noopener">View Authored Book</a>
-      <a class="btn" href="https://dtmi.ft.ugm.ac.id/sinau-bareng-dtmi-hadirkan-narasumber-india-bahas-teknologi-komposit-polimer/" target="_blank" rel="noopener">News from UGM, Indonesia</a>
-      <a class="btn" href="https://www.sme.org/aboutsme/awards/distinguished-faculty-advisor-award/2025-sme-distinguished-faculty-advisors/" target="_blank" rel="noopener">News release SME, USA</a>
-      <a class="btn" href="#contact">Contact</a>
-    <div class="actions">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">Academic & Research Profile</div>
+      <h2>Dr. Sharan Chandran M <span class="creds">PhD, Postdoc</span></h2>
+      <p>Senior Assistant Professor · Department of Design and Automation<br>School of Mechanical Engineering, VIT Vellore, India</p>
+      <p>Mechanical engineering academic and materials researcher working across sustainable composites, additive manufacturing, and student-led engineering innovation.</p>
+      <div class="actions">
+        <a class="btn primary" href="#research">Explore Research</a>
+        <a class="btn" href="https://www.amazon.in/Self-Reinforced-Polymer-Composites-Engineering-Technology/dp/311064729X" target="_blank" rel="noopener">View Authored Book</a>
+        <a class="btn" href="https://dtmi.ft.ugm.ac.id/sinau-bareng-dtmi-hadirkan-narasumber-india-bahas-teknologi-komposit-polimer/" target="_blank" rel="noopener">News from UGM, Indonesia</a>
+        <a class="btn" href="https://www.sme.org/aboutsme/awards/distinguished-faculty-advisor-award/2025-sme-distinguished-faculty-advisors/" target="_blank" rel="noopener">News release SME, USA</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
     </div>
+    <img src="sharan_profile_round.png" alt="Dr. Sharan Chandran M" class="profile-photo">
   </div>
-   <img src="sharan_profile_round.png"
-         alt="Dr. Sharan Chandran M"
-         class="profile-photo">
 </div>
 <main class="wrap">
 <section id="about">
