@@ -234,6 +234,62 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
     <p><a href="https://www.amazon.in/Self-Reinforced-Polymer-Composites-Engineering-Technology/dp/311064729X" target="_blank" rel="noopener">View book listing ↗</a></p>
   </div>
 </section>
+<!-- Testimonials Section -->
+<section id="testimonials">
+  <div class="section-head">
+    <div class="kicker">Testimonials</div>
+    <h2>What People Say</h2>
+    <p class="lead">
+      Feedback from students, colleagues, and research collaborators.
+    </p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Share Your Testimonial</h3>
+
+      <form id="testimonial-form">
+        <label for="testimonial-name">Name (optional)</label>
+        <input
+          type="text"
+          id="testimonial-name"
+          name="name"
+          maxlength="100"
+          placeholder="Your name"
+        >
+
+        <label for="testimonial-details">Designation / Details (optional)</label>
+        <input
+          type="text"
+          id="testimonial-details"
+          name="details"
+          maxlength="160"
+          placeholder="e.g., Research Scholar, VIT Vellore"
+        >
+
+        <label for="testimonial-message">Your Testimonial *</label>
+        <textarea
+          id="testimonial-message"
+          name="message"
+          rows="5"
+          maxlength="2000"
+          minlength="10"
+          required
+          placeholder="Write your feedback here..."
+        ></textarea>
+
+        <button type="submit">Submit Testimonial</button>
+
+        <p id="testimonial-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <h3>Published Testimonials</h3>
+  <div id="approved-testimonials" class="grid">
+    <p>Loading testimonials...</p>
+  </div>
+</section>
 <section id="contact">
   <div class="section-head"><div class="kicker">Contact</div><h2>Connect with me</h2><p class="lead">For research collaboration, academic engagement, student projects, or professional enquiries.</p></div>
   <div class="grid">
