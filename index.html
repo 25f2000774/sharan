@@ -418,9 +418,78 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
     align-self: stretch;
   }
 }
+  
+/* Sanskrit Wisdom Banner */
+.sanskrit-banner {
+  text-align: center;
+  padding: 30px 20px 26px;
+  background: linear-gradient(135deg, #101d32, #1b2c46);
+  border-bottom: 2px solid #b99a55;
+  color: #f8f3e8;
+}
+
+.sanskrit-ornament {
+  color: #d5b56d;
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.sanskrit-verse {
+  font-family: "Noto Serif Devanagari",
+               "Nirmala UI", serif;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.8;
+  font-weight: 500;
+  color: #e4c77e;
+  margin: 0 auto 10px;
+}
+
+.sanskrit-translation {
+  font-family: Georgia, serif;
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-style: italic;
+  line-height: 1.7;
+  color: #f4efe5;
+  margin: 0 auto 8px;
+}
+
+.sanskrit-source {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #c9c3b6;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .sanskrit-banner {
+    padding: 22px 14px;
+  }
+
+  .sanskrit-verse {
+    line-height: 1.9;
+  }
+}
+
 </style>
 </head>
 <body>
+  
+<!-- Sanskrit Wisdom Banner -->
+<section class="sanskrit-banner">
+  <div class="sanskrit-ornament">॥ सुभाषितम् ॥</div>
+
+  <h2 class="sanskrit-verse">
+    आ नो भद्राः क्रतवो यन्तु विश्वतः ॥
+  </h2>
+
+  <p class="sanskrit-translation">
+    “Let noble thoughts come to us from all directions.”
+  </p>
+
+  <p class="sanskrit-source">— Rig Veda 1.89.1</p>
+</section>
+
 <header>
   <div class="wrap nav">
     <a class="brand" href="#home">SHARAN CHANDRAN M<small>Academic · Research · Student Mentorship</small></a>
