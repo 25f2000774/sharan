@@ -11,7 +11,6 @@
   const status = document.getElementById("form-status");
   const list = document.getElementById("approved-testimonials");
 
-  // Create the Supabase client when the library and configuration are available.
   const supabaseClient =
     window.supabase &&
     config.SUPABASE_URL &&
@@ -21,13 +20,16 @@
       config.SUPABASE_ANON_KEY
     );
 
+  const FUNCTION_URL =
+    "https://gmgaoutklvhiudovvkie.supabase.co/functions/v1/clever-service";
+
   function showStatus(message, isError = false) {
     if (!status) return;
     status.textContent = message;
     status.style.color = isError ? "#b42318" : "#237447";
   }
 
-  // Display only testimonials approved in the database.
+  // Display only approved testimonials.
   async function loadApprovedTestimonials() {
     if (!list) return;
 
@@ -98,11 +100,11 @@
     }
   }
 
-  // Submit testimonials through the server-side Edge Function.
+  // Submit through the server-side Edge Function.
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (!supabaseClient) {
+    if (!config.SUPABASE_ANON_KEY) {
       showStatus(
         "The submission service is not configured yet. Please try again later.",
         true
@@ -123,23 +125,20 @@
     };
 
     try {
-      const response = await fetch(
-        `${config.SUPABASE_URL}/functions/v1/submit-testimonial`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: config.SUPABASE_ANON_KEY
-          },
-          body: JSON.stringify(payload)
-        }
-      );
+      const response = await fetch(FUNCTION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: config.SUPABASE_ANON_KEY
+        },
+        body: JSON.stringify(payload)
+      });
 
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         throw new Error(
-          result.error || "Submission failed. Please try again."
+          result.message || "Submission failed. Please try again."
         );
       }
 
@@ -148,6 +147,7 @@
         "Thank you! Your testimonial has been submitted and is awaiting approval."
       );
     } catch (error) {
+      console.error("Testimonial submission failed:", error);
       showStatus(
         error.message || "Unable to submit right now. Please try again.",
         true
@@ -159,4 +159,3 @@
 
   loadApprovedTestimonials();
 })();
-
