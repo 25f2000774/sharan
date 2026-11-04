@@ -787,9 +787,65 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
 </section>
 </main>
 <footer><div class="wrap footer-row"><div><strong>Dr. Sharan Chandran M</strong><br><span>Academic · Research · Student Mentorship</span></div><div>© <span id="year">2026</span> Dr. Sharan Chandran M. All rights reserved.</div></div></footer>
+
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <script src="testimonials.js"></script>
+
+<!-- TESTIMONIALS AUTO-SCROLL -->
+<script>
+(function () {
+  const list = document.getElementById('approved-testimonials');
+  const viewport = document.getElementById('testimonial-viewport');
+  if (!list || !viewport) return;
+
+  const SECONDS_PER_CARD = 8;   // higher = slower
+  let busy = false;
+
+  function setupAutoScroll() {
+    if (busy) return;
+    busy = true;
+
+    // reset before re-measuring
+    list.querySelectorAll('[data-clone="true"]').forEach(el => el.remove());
+    list.classList.remove('is-scrolling');
+
+    const cards = Array.from(list.children).filter(
+      el => !el.classList.contains('testimonial-empty')
+    );
+
+    // only scroll if the cards don't fit in the viewport
+    if (cards.length > 0 && list.scrollHeight > viewport.clientHeight) {
+      cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('data-clone', 'true');
+        clone.setAttribute('aria-hidden', 'true');
+        list.appendChild(clone);
+      });
+      list.style.setProperty('--scroll-duration', (cards.length * SECONDS_PER_CARD) + 's');
+      list.classList.add('is-scrolling');
+    }
+
+    setTimeout(() => { busy = false; }, 0);
+  }
+
+  // re-run whenever testimonials.js adds or changes cards
+  const observer = new MutationObserver(() => {
+    if (busy) return;
+    observer.disconnect();
+    setupAutoScroll();
+    observer.observe(list, { childList: true });
+  });
+  observer.observe(list, { childList: true });
+
+  window.addEventListener('load', setupAutoScroll);
+  let t;
+  window.addEventListener('resize', () => {
+    clearTimeout(t);
+    t = setTimeout(setupAutoScroll, 250);
+  });
+})();
+</script>
 </body>
 </html>
