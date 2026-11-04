@@ -470,7 +470,34 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
     line-height: 1.9;
   }
 }
+.testimonial-viewport {
+  height: 620px;               /* visible height, adjust to match the form side */
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
+}
 
+/* added by JS only when there are enough testimonials to scroll */
+.testimonial-list.is-scrolling {
+  animation: testimonialScroll var(--scroll-duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.testimonial-viewport:hover .testimonial-list.is-scrolling,
+.testimonial-viewport:focus-within .testimonial-list.is-scrolling {
+  animation-play-state: paused;   /* pause on hover so people can read */
+}
+
+@keyframes testimonialScroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }  /* list is duplicated, so -50% loops seamlessly */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-list.is-scrolling { animation: none; }
+  .testimonial-viewport { overflow-y: auto; }
+}
 </style>
 </head>
 <body>
@@ -720,25 +747,28 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
     </div>
 
     <!-- RIGHT: APPROVED TESTIMONIALS -->
-    <div class="published-testimonials-card">
-      <div class="testimonial-card-heading">
-        <div class="testimonial-icon">☆</div>
-        <div>
-          <h3>Published Testimonials</h3>
-          <p>Feedback shared by our community.</p>
-        </div>
-      </div>
+<div class="published-testimonials-card">
+  <div class="testimonial-card-heading">
+    <div class="testimonial-icon">☆</div>
+    <div>
+      <h3>Published Testimonials</h3>
+      <p>Feedback shared by our community.</p>
+    </div>
+  </div>
 
-      <!-- Your Supabase JavaScript will populate this with approved entries -->
-      <div id="approved-testimonials" class="testimonial-list">
-        <div class="testimonial-empty">
-          <span class="empty-quote">“</span>
-          <p>Published testimonials will appear here once they have been approved.</p>
-        </div>
+  <!-- NEW: scroll viewport -->
+  <div class="testimonial-viewport" id="testimonial-viewport">
+
+    <!-- Your Supabase JavaScript will populate this with approved entries -->
+    <div id="approved-testimonials" class="testimonial-list">
+      <div class="testimonial-empty">
+        <span class="empty-quote">“</span>
+        <p>Published testimonials will appear here once they have been approved.</p>
       </div>
     </div>
 
-  </div>
+  </div><!-- /testimonial-viewport -->
+</div>
 </section>
 <section id="contact">
   <div class="section-head"><div class="kicker">Contact</div><h2>Connect with me</h2><p class="lead">For research collaboration, academic engagement, student projects, or professional enquiries.</p></div>
