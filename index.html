@@ -659,7 +659,19 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
     padding: 23px;
   }
 }
+.right-column-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;               /* space between the two cards */
+}
 
+.phd-list li {
+  margin-bottom: 12px;
+}
+
+.phd-list li span {
+  color: #64748b;          /* soft grey, like your other description text */
+}
 </style>
 </head>
 <body>
@@ -819,8 +831,26 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
       <ul class="clean">
         <li>Engineering Mechanics</li><li>Mechanics of Solids</li><li>Design of Machine Elements</li><li>CAD and Introduction to Finite Element Analysis</li><li>Advanced Solid Mechanics and Stress Analysis (PG)</li><li>Engineering Innovation and Modeling</li><li>AI driven Engineering Design</li>
       </ul>
-      <p><strong>Project guidance:</strong> 40+ undergraduate projects, 20+ postgraduate projects, and PhD supervision (one completed, two in progress).</p>
+      <p><strong>Project guidance:</strong> 60+ undergraduate projects, 20+ postgraduate projects, and PhD supervision (one completed, two in progress).</p>
     </div>
+     <!-- NEW: PhD Supervision card -->
+  <div class="card">
+    <h3>PhD Supervision</h3>
+    <ul class="phd-list">
+      <li>
+        <strong>Dr. Midhun Varma V M</strong> (Completed)<br>
+        <span>Glow Discharge Air Plasma surface treatment to enhance the mechanical properties of natural fibre reinforced composites</span>
+      </li>
+      <li>
+        <strong>Mr. Sathya Narayana Moorthy J</strong> (Ongoing)<br>
+        <span>Hybrid manufacturing of polymer composites reinforced with natural fiber for lightweight applications</span>
+      </li>
+      <li>
+        <strong>Ms. Rajalakshmi V</strong> (Ongoing)<br>
+        <span>Biocomposites for Biomedical robotic flexible sensors</span>
+      </li>
+    </ul>
+  </div>
   </div>
 </section>
 <section id="experience">
