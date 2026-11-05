@@ -672,6 +672,61 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
 .phd-list li span {
   color: #64748b;          /* soft grey, like your other description text */
 }
+  .thought-section {
+  padding: 40px 0;
+}
+
+.thought-card {
+  position: relative;
+  background: linear-gradient(135deg, #eef5ff 0%, #ffffff 100%);
+  border: 1px solid #dbe7f7;
+  border-radius: 24px;
+  padding: 32px 36px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.08);
+}
+
+.thought-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #1e6a8a;
+  margin-bottom: 14px;
+}
+
+.thought-icon { color: #2563eb; }
+
+.thought-text {
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #0f2340;
+}
+
+.thought-text::before { content: "“"; }
+.thought-text::after  { content: "”"; }
+
+.thought-author {
+  margin: 14px 0 0;
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.thought-date {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 600px) {
+  .thought-card { padding: 24px 20px; }
+  .thought-text { font-size: 1.2rem; }
+}
 </style>
 </head>
 <body>
@@ -925,6 +980,20 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
     <p><a href="https://www.amazon.in/Self-Reinforced-Polymer-Composites-Engineering-Technology/dp/311064729X" target="_blank" rel="noopener">View book listing ↗</a></p>
   </div>
 </section>
+  <!-- THOUGHT OF THE DAY -->
+<section id="thought-of-the-day" class="thought-section">
+  <div class="wrap">
+    <div class="thought-card">
+      <div class="thought-label">
+        <span class="thought-icon" aria-hidden="true">✦</span>
+        THOUGHT OF THE DAY
+      </div>
+      <blockquote class="thought-text" id="thought-text">Loading…</blockquote>
+      <p class="thought-author" id="thought-author"></p>
+      <div class="thought-date" id="thought-date"></div>
+    </div>
+  </div>
+</section>
 <!-- TESTIMONIALS SECTION -->
 <section id="testimonials" class="testimonials-section">
 
@@ -1101,6 +1170,90 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
   window.addEventListener('resize', () => {
     clearTimeout(t);
     t = setTimeout(setupAutoScroll, 250);
+  });
+})();
+</script>
+  <script>
+(function () {
+  // ✏️ EDIT THIS LIST: add as many thoughts as you like.
+  // One is shown per day and the list loops when it ends.
+    const thoughts = [
+    // ---- Bhagavad Gita ----
+    { text: "You have the right to perform your actions, but not to the fruits of those actions.", author: "Bhagavad Gita 2.47" },
+    { text: "Lift yourself by your own effort; do not let yourself sink. The self alone is the friend of the self.", author: "Bhagavad Gita 6.5" },
+    { text: "There is nothing in this world as purifying as knowledge.", author: "Bhagavad Gita 4.38" },
+    { text: "Perform your duty with a steady mind, equal in success and failure. This evenness of mind is called yoga.", author: "Bhagavad Gita 2.48" },
+    { text: "The mind is restless and hard to control, but it can be trained through practice and detachment.", author: "Bhagavad Gita 6.35" },
+
+    // ---- Vedas and Upanishads ----
+    { text: "Truth alone triumphs, not falsehood.", author: "Mundaka Upanishad 3.1.6" },
+    { text: "Lead me from untruth to truth, from darkness to light, from death to immortality.", author: "Brihadaranyaka Upanishad 1.3.28" },
+    { text: "Speak the truth. Follow righteousness. Never neglect learning.", author: "Taittiriya Upanishad 1.11" },
+    { text: "Revere your teacher as you would a divine being.", author: "Taittiriya Upanishad 1.11 (Acharya Devo Bhava)" },
+    { text: "Arise, awake, and stop not until the goal is reached.", author: "Katha Upanishad, as popularised by Swami Vivekananda" },
+    { text: "Truth is one; the wise describe it in many ways.", author: "Rig Veda 1.164.46" },
+    { text: "Let noble thoughts come to us from every side.", author: "Rig Veda 1.89.1" },
+    { text: "The whole world is one family.", author: "Maha Upanishad 6.71 (Vasudhaiva Kutumbakam)" },
+
+    // ---- Epics, Hitopadesha, Subhashitas, Arthashastra ----
+    { text: "Non-violence is the highest duty.", author: "Mahabharata (Ahimsa Paramo Dharma)" },
+    { text: "Knowledge gives humility, humility gives worthiness, and worthiness leads to prosperity and righteous living.", author: "Hitopadesha" },
+    { text: "Work is accomplished through effort, not through mere wishes.", author: "Hitopadesha (Udyamena Hi Siddhyanti)" },
+    { text: "Knowledge is a person's true beauty, a treasure carefully hidden, which brings comfort and fame.", author: "Bhartrihari, Nitishataka" },
+    { text: "Knowledge grows when it is shared, unlike wealth, which shrinks when spent.", author: "Sanskrit Subhashita" },
+    { text: "In the happiness of his people lies the happiness of the ruler.", author: "Kautilya, Arthashastra 1.19" },
+    { text: "An educated person is respected everywhere.", author: "Attributed to Chanakya" },
+
+    // ---- Thirukkural ----
+    { text: "Learn thoroughly what is worth learning, and then live by what you have learned.", author: "Thirukkural 391" },
+    { text: "The deeper you dig a sandy well, the more water springs forth; the more you learn, the more knowledge flows.", author: "Thirukkural 396" },
+    { text: "Learning is the imperishable wealth; everything else is not true wealth.", author: "Thirukkural 400" },
+    { text: "The stalk of the water lily rises as high as the water is deep; a person rises as high as their resolve.", author: "Thirukkural 595" },
+    { text: "Even if destiny denies the result, sincere effort will still earn its reward.", author: "Thirukkural 619" },
+
+    // ---- Buddhist wisdom ----
+    { text: "You yourself must strive. The Buddhas only point the way.", author: "Dhammapada 276" },
+
+    // ---- Modern Indian thinkers ----
+    { text: "Dream, dream, dream. Dreams transform into thoughts, and thoughts result in action.", author: "Dr. A. P. J. Abdul Kalam" },
+    { text: "You cannot believe in God until you believe in yourself.", author: "Swami Vivekananda" },
+    { text: "Faith is the bird that feels the light and sings while the dawn is still dark.", author: "Rabindranath Tagore" },
+    { text: "Live as if you were to die tomorrow. Learn as if you were to live forever.", author: "Attributed to Mahatma Gandhi" },
+    { text: "Education is not the filling of a pail, but the lighting of a fire.", author: "Attributed to W. B. Yeats" },
+
+    // ---- Science and engineering ----
+    { text: "The important thing is not to stop questioning.", author: "Albert Einstein" },
+    { text: "Nothing in life is to be feared; it is only to be understood.", author: "Marie Curie" },
+    { text: "If I have seen further, it is by standing on the shoulders of giants.", author: "Isaac Newton" },
+    { text: "The first principle is that you must not fool yourself, and you are the easiest person to fool.", author: "Richard Feynman" },
+    { text: "Engineering is the art of directing the great sources of power in nature for the use and convenience of people.", author: "Thomas Tredgold" },
+
+    // ---- General wisdom ----
+    { text: "The best way to predict the future is to create it.", author: "Peter Drucker" },
+    { text: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
+    { text: "What we learn with pleasure we never forget.", author: "Alfred Mercier" },
+    { text: "Well begun is half done.", author: "Aristotle" },
+    { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+    { text: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu" },
+    { text: "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela" }
+  ];
+
+  const textEl = document.getElementById('thought-text');
+  const authorEl = document.getElementById('thought-author');
+  const dateEl = document.getElementById('thought-date');
+  if (!textEl || !thoughts.length) return;
+
+  // Day number based on the visitor's local date, so it changes at local midnight
+  const now = new Date();
+  const dayNumber = Math.floor(
+    Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000
+  );
+  const thought = thoughts[dayNumber % thoughts.length];
+
+  textEl.textContent = thought.text;
+  authorEl.textContent = thought.author ? "— " + thought.author : "";
+  dateEl.textContent = now.toLocaleDateString('en-IN', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
   });
 })();
 </script>
