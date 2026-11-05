@@ -508,6 +508,158 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
   .testimonial-list.is-scrolling { animation: none; }
   .testimonial-viewport { overflow-y: auto; }
 }
+  
+/* ===== Professional Engagement Section ===== */
+
+.professional-engagement {
+  padding-top: 55px;
+  padding-bottom: 65px;
+}
+
+.professional-engagement .section-heading {
+  margin-bottom: 28px;
+}
+
+.professional-engagement .section-eyebrow {
+  display: block;
+  color: #16718b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  margin-bottom: 10px;
+}
+
+.professional-engagement .section-heading h2 {
+  font-size: clamp(28px, 3vw, 38px);
+  color: #142b45;
+  margin: 0 0 10px;
+}
+
+.professional-engagement .section-heading p {
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.professional-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.professional-card {
+  background: #ffffff;
+  border: 1px solid #dce5ed;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(20, 43, 69, 0.05);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.professional-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(20, 43, 69, 0.10);
+}
+
+.professional-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #edf5f8;
+  color: #16718b;
+  font-size: 20px;
+  margin-bottom: 17px;
+}
+
+.professional-card h3 {
+  color: #142b45;
+  font-size: 21px;
+  margin: 0 0 10px;
+}
+
+.professional-card .card-intro {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.membership-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.membership-list li {
+  padding: 14px 0;
+  border-top: 1px solid #e8edf2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.membership-list li strong {
+  color: #253c55;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.membership-list li span {
+  color: #16718b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mentor-highlight {
+  background: #f3f7fa;
+  border-left: 3px solid #b99a55;
+  border-radius: 0 10px 10px 0;
+  padding: 20px;
+  margin-top: 8px;
+}
+
+.mentor-label {
+  color: #16718b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.mentor-highlight h4 {
+  color: #142b45;
+  font-size: 23px;
+  margin: 9px 0 10px;
+}
+
+.mentor-highlight p {
+  color: #526477;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .professional-engagement {
+    padding-top: 35px;
+    padding-bottom: 40px;
+  }
+
+  .professional-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .professional-card {
+    padding: 23px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -585,32 +737,64 @@ footer{background:var(--navy);color:#d7e6ed;padding:2rem 0}footer a{color:#9fe3d
   </div>
 </section>
   
+
 <!-- Professional Memberships & Industry Engagement -->
-<section id="professional-engagement" class="section">
+<section id="professional-engagement" class="section professional-engagement">
   <div class="container">
 
-    <h2>Professional Memberships & Industry Engagement</h2>
+    <div class="section-heading">
+      <span class="section-eyebrow">PROFESSIONAL NETWORK & INDUSTRY CONNECT</span>
+      <h2>Professional Engagement</h2>
+      <p>
+        Connecting academic expertise with professional networks,
+        industry, and entrepreneurial initiatives.
+      </p>
+    </div>
 
-    <div class="engagement-grid">
+    <div class="professional-grid">
 
-      <div class="engagement-card">
+      <!-- Professional Memberships -->
+      <div class="professional-card">
+        <div class="professional-icon">✦</div>
         <h3>Professional Memberships</h3>
-        <ul>
-          <li>Society of Manufacturing Engineers (SME), USA</li>
-          <li>Confederation of Indian Industry (CII), India</li>
-          <li>Indian Science Congress Association (ISCA), India</li>
+        <p class="card-intro">
+          Active engagement with professional and scientific communities.
+        </p>
+
+        <ul class="membership-list">
+          <li>
+            <strong>Society of Manufacturing Engineers (SME)</strong>
+            <span>USA</span>
+          </li>
+          <li>
+            <strong>Confederation of Indian Industry (CII)</strong>
+            <span>India</span>
+          </li>
+          <li>
+            <strong>Indian Science Congress Association (ISCA)</strong>
+            <span>India</span>
+          </li>
         </ul>
       </div>
 
-      <div class="engagement-card">
-        <h3>Startup Mentorship & Entrepreneurship</h3>
-        <h4>Faculty Mentor – Rupsetu</h4>
-        <p>
-          Serving as Faculty Mentor to Rupsetu, providing
-          academic and technical guidance, supporting innovation,
-          and mentoring the startup in its development and
-          entrepreneurial journey.
+      <!-- Startup Mentorship -->
+      <div class="professional-card startup-card">
+        <div class="professional-icon">✦</div>
+        <h3>Startup Mentorship</h3>
+        <p class="card-intro">
+          Supporting innovation, entrepreneurship, and
+          technology-driven initiatives.
         </p>
+
+        <div class="mentor-highlight">
+          <span class="mentor-label">FACULTY MENTOR</span>
+          <h4>Rupsetu</h4>
+          <p>
+            Providing academic and technical guidance,
+            mentoring innovation initiatives, and supporting
+            the startup's development and entrepreneurial journey.
+          </p>
+        </div>
       </div>
 
     </div>
