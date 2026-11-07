@@ -242,7 +242,35 @@ ul.clean li { margin: .4rem 0; }
 .right-column-stack { display: flex; flex-direction: column; gap: 20px; }
 .phd-list li { margin-bottom: 12px; }
 .phd-list li span { color: #64748b; }
-
+/* ---------- NEWS ---------- */
+.news-section { background: #12384f; color: #fff; padding: 60px 0; }
+.news-title { margin: 0 0 12px; font-size: 2.6rem; font-weight: 700; color: #fff; }
+.news-subtitle { margin: 0 0 36px; font-size: 1.5rem; color: #fff; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; }
+.news-card {
+  display: flex; flex-direction: column; background: #f4f6f8; border-radius: 8px;
+  overflow: hidden; text-decoration: none; color: #1a2b4a;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25); transition: transform .2s, box-shadow .2s;
+}
+.news-card:hover, .news-card:focus-visible { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(0,0,0,.35); }
+.news-thumb { margin: 14px 14px 0; height: 310px; background: #fff; overflow: hidden; }
+.news-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.news-caption {
+  padding: 22px 18px 26px; font-weight: 600; font-size: 1.05rem; text-align: center;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.news-extra { display: none; }
+.news-grid.show-all .news-extra { display: flex; }
+.news-viewall {
+  display: inline-flex; align-items: center; gap: 14px; margin-top: 36px; padding: 0;
+  background: none; border: 0; color: #fff; font-size: 1.15rem; font-weight: 700; cursor: pointer;
+}
+.news-arrow { font-size: .7rem; }
+@media (max-width: 600px) {
+  .news-title { font-size: 2rem; }
+  .news-subtitle { font-size: 1.15rem; }
+  .news-thumb { height: 240px; }
+}
 /* =========================================================
    6. PROFESSIONAL ENGAGEMENT
    ========================================================= */
@@ -629,7 +657,7 @@ footer a { color: #9fe3dc; }
   <div class="wrap nav">
     <a class="brand" href="#home">SHARAN CHANDRAN M<small>Academic · Research · Student Mentorship</small></a>
     <nav aria-label="Main navigation">
-      <a href="#about">About</a><a href="#research">Research</a><a href="#mentorship">Mentorship</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#news">News</a><a href="#research">Research</a><a href="#mentorship">Mentorship</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -643,11 +671,9 @@ footer a { color: #9fe3dc; }
 </p>
       <p>Mechanical engineering academic and materials researcher working across sustainable composites, additive manufacturing, and student-led engineering innovation.</p>
       <p>Available for professional consultancy, educational consulting, academic mentoring, curriculum development, and collaborative R&D projects in advanced polymer composites, materials engineering, manufacturing, testing, and AI-enabled materials development.</p>
-      <div class="actions">
+     <div class="actions">
         <a class="btn primary" href="#research">Explore Research</a>
-        <a class="btn" href="https://www.amazon.in/Self-Reinforced-Polymer-Composites-Engineering-Technology/dp/311064729X" target="_blank" rel="noopener">View Authored Book</a>
-        <a class="btn" href="https://dtmi.ft.ugm.ac.id/sinau-bareng-dtmi-hadirkan-narasumber-india-bahas-teknologi-komposit-polimer/" target="_blank" rel="noopener">News from UGM, Indonesia</a>
-        <a class="btn" href="https://www.sme.org/aboutsme/awards/distinguished-faculty-advisor-award/2025-sme-distinguished-faculty-advisors/" target="_blank" rel="noopener">News release SME, USA</a>
+        <a class="btn" href="#news">News &amp; Media</a>
         <a class="btn" href="#contact">Contact</a>
       </div>
     </div>
@@ -669,6 +695,38 @@ footer a { color: #9fe3dc; }
       <div class="card"><div class="metric">60+</div><p>UG and PG projects guided</p></div>
       <div class="card"><div class="metric">7</div><p>Patents/design registrations</p></div>
     </div>
+  </div>
+</section>
+  <!-- NEWS SECTION -->
+<section id="news" class="news-section">
+  <div class="wrap">
+    <h2 class="news-title">NEWS</h2>
+    <p class="news-subtitle">Stay updated with latest NEWS</p>
+
+    <div class="news-grid" id="news-grid">
+
+      <a class="news-card" href="https://www.amazon.in/Self-Reinforced-Polymer-Composites-Engineering-Technology/dp/311064729X" target="_blank" rel="noopener">
+        <div class="news-thumb"><img src="images/news-book.jpg" alt="Self-Reinforced Polymer Composites book" loading="lazy"></div>
+        <div class="news-caption">View Authored Book</div>
+      </a>
+
+      <a class="news-card" href="https://dtmi.ft.ugm.ac.id/sinau-bareng-dtmi-hadirkan-narasumber-india-bahas-teknologi-komposit-polimer/" target="_blank" rel="noopener">
+        <div class="news-thumb"><img src="images/news-ugm.jpg" alt="News from UGM, Indonesia" loading="lazy"></div>
+        <div class="news-caption">News from UGM, Indonesia</div>
+      </a>
+
+      <a class="news-card" href="https://www.sme.org/aboutsme/awards/distinguished-faculty-advisor-award/2025-sme-distinguished-faculty-advisors/" target="_blank" rel="noopener">
+        <div class="news-thumb"><img src="images/news-sme.jpg" alt="News release SME, USA" loading="lazy"></div>
+        <div class="news-caption">News release SME, USA</div>
+      </a>
+
+      <!-- To add more later, copy a card and add the class "news-extra":
+           <a class="news-card news-extra" ...> -->
+    </div>
+
+    <button type="button" class="news-viewall" id="news-viewall" hidden>
+      <span class="news-arrow">▶</span> View All
+    </button>
   </div>
 </section>
 <section id="research">
@@ -1151,6 +1209,19 @@ footer a { color: #9fe3dc; }
   dateEl.textContent = now.toLocaleDateString('en-IN', {
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
   });
+})();
+    /* ===== 2. News "View All" ===== */
+(function () {
+  const grid = document.getElementById('news-grid');
+  const btn = document.getElementById('news-viewall');
+  if (!grid || !btn) return;
+  if (grid.querySelector('.news-extra')) {
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      const open = grid.classList.toggle('show-all');
+      btn.lastChild.textContent = open ? ' Show Less' : ' View All';
+    });
+  }
 })();
 </script>
 </body>
