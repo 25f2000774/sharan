@@ -667,6 +667,43 @@ footer a { color: #9fe3dc; }
   .card { box-shadow: none; break-inside: avoid; }
   section { padding: 1rem 0; }
 }
+/* ---------- FESTIVAL GREETING STRIP ---------- */
+.festival-strip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 14px 56px 14px 20px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(90deg, #0f1c33, #16274a, #0f1c33);
+  border-bottom: 3px solid var(--fc, #f5c26b);
+  box-shadow: inset 0 -34px 60px -40px var(--fc, #f5c26b);
+}
+.festival-emoji  { font-size: 1.8rem; line-height: 1; }
+.festival-native { font-size: 1.25rem; font-weight: 700; color: var(--fc, #f5c26b); }
+.festival-name   { font-weight: 700; }
+.festival-text   { opacity: .9; }
+.festival-close {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: .7;
+}
+.festival-close:hover { opacity: 1; }
+@media (max-width: 600px) {
+  .festival-strip { padding: 12px 44px 12px 14px; font-size: .9rem; }
+  .festival-native { font-size: 1.05rem; }
+}
 </style>
 </head>
 <body>
@@ -1258,6 +1295,94 @@ footer a { color: #9fe3dc; }
     });
   }
 })();
+<script>
+(function () {
+  /* ================= FESTIVAL LIST =================
+     md   = "MM-DD"       -> repeats every year (fixed-date festivals)
+     date = "YYYY-MM-DD"  -> one year only (lunar-calendar festivals)
+     days = how many days to show it (default 1)
+     Check the "date" entries against an official calendar before relying on them. */
+  const FESTIVALS = [
+    // ---- Fixed dates (repeat yearly) ----
+    { md:'01-01', name:'New Year', emoji:'🎆', native:'Happy New Year', text:'Wishing you a year of learning, discovery and joy.', color:'#f5c26b' },
+    { md:'01-13', name:'Lohri', emoji:'🔥', native:'ਲੋਹੜੀ ਦੀਆਂ ਵਧਾਈਆਂ', text:'Warm wishes on Lohri.', color:'#ff9f43' },
+    { md:'01-14', days:2, name:'Pongal & Makar Sankranti', emoji:'🌾', native:'பொங்கல் வாழ்த்துகள் · मकर संक्रांति की शुभकामनाएँ', text:'Wishing you harvest, prosperity and happiness.', color:'#f9ca24' },
+    { md:'01-26', name:'Republic Day', emoji:'🇮🇳', native:'गणतंत्र दिवस की शुभकामनाएँ', text:'Happy Republic Day!', color:'#ff9933' },
+    { md:'04-14', name:'Baisakhi, Vishu & Puthandu', emoji:'🌼', native:'ਵਿਸਾਖੀ · വിഷു ആശംസകൾ · புத்தாண்டு வாழ்த்துகள்', text:'Wishing you a bright and prosperous new year.', color:'#f9ca24' },
+    { md:'08-15', name:'Independence Day', emoji:'🇮🇳', native:'स्वतंत्रता दिवस की शुभकामनाएँ', text:'Happy Independence Day!', color:'#ff9933' },
+    { md:'09-05', name:"Teachers' Day", emoji:'📚', native:'शिक्षक दिवस की शुभकामनाएँ', text:"Happy Teachers' Day, and gratitude to every teacher and mentor.", color:'#5eead4' },
+    { md:'10-02', name:'Gandhi Jayanti', emoji:'🕊️', native:'गांधी जयंती', text:'Remembering the Mahatma and his message of peace.', color:'#e5e7eb' },
+    { md:'12-24', days:3, name:'Christmas', emoji:'🎄', native:'Merry Christmas', text:'Wishing you peace, joy and warmth this season.', color:'#ef4444' },
+
+    // ---- 2026 (remaining) ----
+    { date:'2026-11-08', days:2, name:'Diwali', emoji:'🪔', native:'दीपावली की हार्दिक शुभकामनाएँ', text:'Happy Diwali! May the festival of lights bring joy and prosperity. Also greetings on Bandi Chhor Divas and Mahavir Nirvana.', color:'#fbbf24' },
+    { date:'2026-11-24', name:'Guru Nanak Gurpurab', emoji:'🙏', native:'ਗੁਰਪੁਰਬ ਦੀਆਂ ਲੱਖ ਲੱਖ ਵਧਾਈਆਂ', text:'Wishing you peace and blessings on Guru Nanak Jayanti.', color:'#38bdf8' },
+
+    // ---- 2027 (verify before relying on these) ----
+    { date:'2027-03-06', name:'Maha Shivaratri', emoji:'🔱', native:'महाशिवरात्रि की हार्दिक शुभकामनाएँ', text:'Om Namah Shivaya.', color:'#a78bfa' },
+    { date:'2027-03-10', days:1, name:'Eid al-Fitr', emoji:'🌙', native:'عید مبارک · ईद मुबारक', text:'Eid Mubarak! Date depends on moon sighting, so adjust by a day if needed.', color:'#34d399' },
+    { date:'2027-03-22', name:'Holi', emoji:'🎨', native:'होली की हार्दिक शुभकामनाएँ', text:'Wishing you a colourful and joyful Holi.', color:'#f472b6' },
+    { date:'2027-03-28', name:'Easter', emoji:'🐣', native:'Happy Easter', text:'Wishing you hope, renewal and joy this Easter.', color:'#fde68a' },
+    { date:'2027-04-07', name:'Ugadi & Gudi Padwa', emoji:'🌿', native:'ఉగాది శుభాకాంక్షలు · गुढी पाडव्याच्या शुभेच्छा', text:'Wishing you a happy and prosperous new year.', color:'#4ade80' },
+    { date:'2027-04-15', name:'Ram Navami', emoji:'🏹', native:'रामनवमी की हार्दिक शुभकामनाएँ', text:'Jai Shri Ram. Wishing you peace and righteousness.', color:'#fb923c' },
+    { date:'2027-04-19', name:'Mahavir Jayanti', emoji:'☸️', native:'महावीर जयंती की हार्दिक शुभकामनाएँ', text:'Wishing you peace, non-violence and compassion.', color:'#fcd34d' },
+    { date:'2027-05-17', name:'Eid al-Adha', emoji:'🌙', native:'عید الاضحی مبارک · ईद उल-अज़हा मुबारक', text:'Eid Mubarak! Date depends on moon sighting.', color:'#34d399' },
+    { date:'2027-05-20', name:'Buddha Purnima', emoji:'🪷', native:'बुद्ध पूर्णिमा की शुभकामनाएँ', text:'Wishing you peace and wisdom.', color:'#fcd34d' },
+    { date:'2027-08-25', name:'Janmashtami', emoji:'🦚', native:'जन्माष्टमी की हार्दिक शुभकामनाएँ', text:'Happy Janmashtami! Hare Krishna.', color:'#60a5fa' },
+    { date:'2027-09-04', days:2, name:'Ganesh Chaturthi', emoji:'🐘', native:'गणेश चतुर्थी की हार्दिक शुभकामनाएँ', text:'Ganpati Bappa Morya! Wishing you wisdom and new beginnings.', color:'#fb923c' },
+    { date:'2027-10-09', name:'Dussehra', emoji:'🏹', native:'विजयादशमी की हार्दिक शुभकामनाएँ', text:'Wishing you the victory of good over evil.', color:'#f97316' },
+    { date:'2027-10-29', days:2, name:'Diwali', emoji:'🪔', native:'दीपावली की हार्दिक शुभकामनाएँ', text:'Happy Diwali! Also greetings on Bandi Chhor Divas and Mahavir Nirvana.', color:'#fbbf24' }
+  ];
+
+  /* ================= LOGIC ================= */
+  const params = new URLSearchParams(location.search);
+  const preview = params.get('preview');          // test: ?preview=2026-11-08
+  const today = preview ? new Date(preview + 'T00:00:00') : new Date();
+  today.setHours(0, 0, 0, 0);
+
+  function isActive(f) {
+    const start = f.date
+      ? new Date(f.date + 'T00:00:00')
+      : new Date(today.getFullYear(), +f.md.slice(0, 2) - 1, +f.md.slice(3));
+    const end = new Date(start);
+    end.setDate(end.getDate() + (f.days || 1) - 1);
+    return today >= start && today <= end;
+  }
+
+  const f = FESTIVALS.find(isActive);
+  if (!f) return;
+
+  const key = 'festival-closed-' + f.name + '-' + today.getFullYear();
+  try { if (sessionStorage.getItem(key)) return; } catch (e) {}
+
+  function el(tag, cls, txt) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (txt) n.textContent = txt;
+    return n;
+  }
+
+  const strip = el('div', 'festival-strip');
+  strip.setAttribute('role', 'region');
+  strip.setAttribute('aria-label', f.name + ' greeting');
+  strip.style.setProperty('--fc', f.color || '#f5c26b');
+
+  strip.appendChild(el('span', 'festival-emoji', f.emoji));
+  strip.appendChild(el('span', 'festival-native', f.native));
+  strip.appendChild(el('span', 'festival-text', f.text));
+
+  const close = el('button', 'festival-close', '×');
+  close.type = 'button';
+  close.setAttribute('aria-label', 'Close greeting');
+  close.addEventListener('click', function () {
+    strip.remove();
+    try { sessionStorage.setItem(key, '1'); } catch (e) {}
+  });
+  strip.appendChild(close);
+
+  document.body.insertBefore(strip, document.body.firstChild);
+})();
+</script>
 </script>
 </body>
 </html>
