@@ -751,6 +751,14 @@ footer a { color: #9fe3dc; }
 #enq-status { margin-left: .8rem; font-size: .9rem; color: #276444; }
 @media (max-width: 780px) { .audience { justify-content: center; } .newsletter { margin-inline: auto; } }
 @media (max-width: 640px) { .enq-form { grid-template-columns: 1fr; } .news-section { padding: 1.8rem 1rem .8rem; } }
+.mentor-cta{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;padding:1.6rem 1.8rem;border-radius:20px;color:#fff;background:linear-gradient(125deg,#10263f,#174d68 65%,#1b7b82);box-shadow:0 12px 30px #122f4533;position:relative;overflow:hidden}
+.mentor-cta::after{content:"";position:absolute;right:-60px;top:-70px;width:220px;height:220px;border:1px solid #ffffff26;border-radius:50%;box-shadow:0 0 0 30px #ffffff08}
+.mentor-cta>*{position:relative;z-index:1}
+.mentor-cta .tag{color:#9fe3dc;font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.mentor-cta h3{margin:.2rem 0 .4rem;color:#fff;font-size:1.35rem}
+.mentor-cta p{margin:0;max-width:560px;color:#e1eef3}
+.mentor-cta .chips span{display:inline-block;margin:.6rem .4rem 0 0;padding:.2rem .65rem;border-radius:999px;background:#ffffff1a;font-size:.8rem}
+.mentor-cta .btn{background:#a8eee4;color:var(--navy);border-color:#a8eee4}
 </style>
 </head>
 <body>
@@ -954,6 +962,15 @@ footer a { color: #9fe3dc; }
     <div class="card"><h3>Industry &amp; consultancy</h3><p>Advanced polymer composites, materials engineering, manufacturing and testing. Past work includes a two-day Solid Mechanics training for 23 engineers at Siemens India (February 2025).</p><a class="more" href="#contact" data-enquiry="Consultancy">Request consultancy →</a></div>
     <div class="card"><h3>Students &amp; PhD applicants</h3><p>Project guidance and PhD supervision in sustainable composites, additive manufacturing and AI-driven engineering design.</p><a class="more" href="#contact" data-enquiry="Student / PhD enquiry">Ask about supervision →</a></div>
     <div class="card"><h3>Research collaboration</h3><p>Joint R&amp;D in natural-fibre composites, surface treatment, interface characterisation and AI-enabled materials development.</p><a class="more" href="#contact" data-enquiry="Research collaboration">Propose a collaboration →</a></div>
+  </div>
+  <div class="mentor-cta">
+    <div>
+      <div class="tag">Ask the Mentor</div>
+      <h3>Stuck on a concept? Let's clear it up.</h3>
+      <p>Send your academic doubts in engineering mechanics, engineering drawing, basic mechanical engineering, mechanics of solids, machine design, FEA or composites, or ask for guidance on projects, research and career choices.</p>
+      <div class="chips"><span>Engineering Mechanics</span><span>Engineering Drawing</span><span>Basic Mechanical Engineering</span><span>Mechanics of Solids</span><span>Machine Design</span><span>CAD &amp; FEA</span><span>Projects &amp; Research</span></div>
+    </div>
+    <a class="btn" href="#contact" data-enquiry="Academic doubt / mentoring">Ask a question →</a>
   </div>
 </section>
 <section id="mentorship">
@@ -1192,7 +1209,7 @@ footer a { color: #9fe3dc; }
     <h3>Send an enquiry</h3>
     <form class="enq-form" id="enquiry-form">
       <div class="full"><label for="enq-type">I am enquiring about</label>
-        <select id="enq-type"><option>Student / PhD enquiry</option><option>Consultancy</option><option>Research collaboration</option><option>Other</option></select></div>
+        <select id="enq-type"><option>Student / PhD enquiry</option><option>Academic doubt / mentoring</option><option>Consultancy</option><option>Research collaboration</option><option>Other</option></select></div>
       <div><label for="enq-name">Name</label><input id="enq-name" type="text" maxlength="100" required autocomplete="name"></div>
       <div><label for="enq-email">Email</label><input id="enq-email" type="email" maxlength="160" required autocomplete="email"></div>
       <div class="full"><label for="enq-message">Message</label><textarea id="enq-message" minlength="10" maxlength="2000" required></textarea></div>
