@@ -1483,8 +1483,8 @@ window.SITE_CONFIG = {
   NEWSLETTER_ACTION: "",  // subscribe-form URL from Buttondown / MailerLite -> shows email box
   ENQUIRY_ENDPOINT: "",   // optional Worker URL; if empty, the form opens the visitor's email app
   ENQUIRY_EMAIL: "sharancm2009@gmail.com",
-  SUPABASE_URL: "https://gmgaoutklvhiudovvkie.supabase.co/rest/v1/",       // e.g. https://abcdxyz.supabase.co   (Project URL)
-  SUPABASE_ANON_KEY: "sb_publishable_aHL1lexC4P7JLAcT8Y391A_MjKyxcfN"   // the PUBLIC "anon / publishable" key. Never the secret key.
+  SUPABASE_URL: "",       // e.g. https://abcdxyz.supabase.co   (Project URL)
+  SUPABASE_ANON_KEY: ""   // the PUBLIC "anon / publishable" key. Never the secret key.
 };
 (function () {
   const C = window.SITE_CONFIG;
@@ -1506,13 +1506,14 @@ window.SITE_CONFIG = {
       try {
         const r = await fetch(C.SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/enquiries', {
           method: 'POST',
-          headers: { 'apikey': C.SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + C.SUPABASE_ANON_KEY,
+          headers: Object.assign({ 'apikey': C.SUPABASE_ANON_KEY,
                      'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+                     C.SUPABASE_ANON_KEY.startsWith('sb_') ? {} : { 'Authorization': 'Bearer ' + C.SUPABASE_ANON_KEY }),
           body: JSON.stringify(Object.assign({}, d, { status: 'new' }))
         });
         if (!r.ok) throw new Error(r.status);
         st.textContent = 'Thank you. Your enquiry has been received.'; this.reset();
-      } catch (err) { st.textContent = 'Could not send. Please email me directly.'; }
+      } catch (err) { console.error('Enquiry error:', err); st.style.color = '#b42318'; st.textContent = 'Could not send (' + (err.message || 'network error') + '). Please email me directly.'; }
       btn.disabled = false;
       return;
     }
