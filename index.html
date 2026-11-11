@@ -1482,7 +1482,9 @@ window.SITE_CONFIG = {
   BOOKING_URL: "",        // e.g. https://calendly.com/yourname/20min  -> shows "Book a call"
   NEWSLETTER_ACTION: "",  // subscribe-form URL from Buttondown / MailerLite -> shows email box
   ENQUIRY_ENDPOINT: "",   // optional Worker URL; if empty, the form opens the visitor's email app
-  ENQUIRY_EMAIL: "sharancm2009@gmail.com"
+  ENQUIRY_EMAIL: "sharancm2009@gmail.com",
+  SUPABASE_URL: "",       // e.g. https://abcdxyz.supabase.co   (Project URL)
+  SUPABASE_ANON_KEY: ""   // the PUBLIC "anon / publishable" key. Never the secret key.
 };
 (function () {
   const C = window.SITE_CONFIG;
@@ -1499,6 +1501,21 @@ window.SITE_CONFIG = {
     const d = { type: $('enq-type').value, name: $('enq-name').value.trim(),
                 email: $('enq-email').value.trim(), message: $('enq-message').value.trim() };
     const st = $('enq-status'), btn = $('enq-btn');
+    if (C.SUPABASE_URL && C.SUPABASE_ANON_KEY) {
+      btn.disabled = true; st.textContent = 'Sending…';
+      try {
+        const r = await fetch(C.SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/enquiries', {
+          method: 'POST',
+          headers: { 'apikey': C.SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + C.SUPABASE_ANON_KEY,
+                     'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify(Object.assign({}, d, { status: 'new' }))
+        });
+        if (!r.ok) throw new Error(r.status);
+        st.textContent = 'Thank you. Your enquiry has been received.'; this.reset();
+      } catch (err) { st.textContent = 'Could not send. Please email me directly.'; }
+      btn.disabled = false;
+      return;
+    }
     if (!C.ENQUIRY_ENDPOINT) {
       location.href = 'mailto:' + C.ENQUIRY_EMAIL + '?subject=' + encodeURIComponent('[' + d.type + '] Enquiry from ' + d.name) +
         '&body=' + encodeURIComponent(d.message + '\n\n' + d.name + ' <' + d.email + '>');
