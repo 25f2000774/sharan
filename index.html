@@ -15,6 +15,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Academic and research profile of Dr. Sharan Chandran M, Senior Assistant Professor at VIT Vellore. Research in sustainable composites, additive manufacturing, and materials engineering.">
 <title>Sharan Chandran M, PhD, PDF | Academic & Research Profile</title>
+<link rel="canonical" href="https://sharanchandran.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dr. Sharan Chandran M | Academic & Research Profile">
+<meta property="og:description" content="Sustainable composites, additive manufacturing, consultancy and student mentorship.">
+<meta property="og:url" content="https://sharanchandran.com/">
+<meta property="og:image" content="https://sharanchandran.com/Professional%20Office%20Headshot.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Dr. Sharan Chandran M","url":"https://sharanchandran.com/","jobTitle":"Senior Assistant Professor","worksFor":{"@type":"CollegeOrUniversity","name":"Vellore Institute of Technology"},"sameAs":["https://www.linkedin.com/in/sharan-chandran-445a3334/","https://scholar.google.co.in/citations?user=aNTYahwAAAAJ&hl=en"]}
+</script>
 <style>
 /* =========================================================
    1. VARIABLES & BASE
@@ -704,6 +714,43 @@ footer a { color: #9fe3dc; }
   .festival-strip { padding: 12px 44px 12px 14px; font-size: .9rem; }
   .festival-native { font-size: 1.05rem; }
 }
+
+/* =========================================================
+   11. ADDITIONS: news fix, hero shortcuts, newsletter, consultancy, enquiry form
+   ========================================================= */
+.btn[hidden], .newsletter[hidden] { display: none !important; }
+.hero h1 { font-size: clamp(1.65rem, 3vw, 2.35rem); line-height: 1.15; letter-spacing: -.025em; margin: .3rem 0; max-width: none; }
+.audience { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1.3rem; }
+.audience span { color: #9fe3dc; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-right: .3rem; }
+.audience a { color: #fff; font-size: .88rem; padding: .35rem .85rem; border-radius: 999px; background: #ffffff1a; }
+.audience a:hover { background: #ffffff33; text-decoration: none; }
+.newsletter { margin-top: 1.2rem; max-width: 470px; }
+.newsletter label { display: block; font-size: .85rem; color: #cfe3ea; margin-bottom: .35rem; }
+.newsletter div { display: flex; gap: .5rem; }
+.newsletter input { flex: 1; min-width: 0; padding: .65rem 1rem; border-radius: 999px; border: 1px solid #ffffff66; background: #ffffff14; color: #fff; font: inherit; }
+.newsletter input::placeholder { color: #cfe3ea; }
+.newsletter button { border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+
+/* news section: navy panel with white cards (these base rules were missing) */
+.news-section { background: var(--navy); color: #fff; border-radius: 24px; padding: 2.4rem 1.6rem 1.2rem; margin: 1.5rem 0; }
+.news-section .wrap { width: 100%; }
+.news-title { margin: 0 0 .3rem; color: #fff; }
+.news-subtitle { margin: 0 0 1.4rem; color: #cfe3ea; }
+.news-card { display: flex; flex-direction: column; background: #f4f6f8; border-radius: 8px; overflow: hidden; color: var(--navy); box-shadow: 0 6px 18px rgba(0,0,0,.25); transition: transform .2s; }
+.news-card:hover { transform: translateY(-4px); text-decoration: none; }
+
+.card .more { display: inline-block; margin-top: .6rem; font-weight: 700; }
+.enq-form { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-bottom: 1.2rem; }
+.enq-form .full { grid-column: 1 / -1; }
+.enq-form label { display: block; font-weight: 650; font-size: .9rem; color: var(--navy); margin-bottom: .25rem; }
+.enq-form input, .enq-form select, .enq-form textarea { width: 100%; padding: .7rem .85rem; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: #fff; }
+.enq-form textarea { min-height: 120px; resize: vertical; }
+.enq-form button { border: 0; border-radius: 999px; padding: .75rem 1.4rem; background: var(--navy); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.enq-form button:disabled { opacity: .6; cursor: wait; }
+.enq-form .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+#enq-status { margin-left: .8rem; font-size: .9rem; color: #276444; }
+@media (max-width: 780px) { .audience { justify-content: center; } .newsletter { margin-inline: auto; } }
+@media (max-width: 640px) { .enq-form { grid-template-columns: 1fr; } .news-section { padding: 1.8rem 1rem .8rem; } }
 </style>
 </head>
 <body>
@@ -727,7 +774,7 @@ footer a { color: #9fe3dc; }
   <div class="wrap nav">
     <a class="brand" href="#home">SHARAN CHANDRAN M<small>Academic · Research · Student Mentorship</small></a>
     <nav aria-label="Main navigation">
-      <a href="#about">About</a><a href="#news">News</a><a href="#research">Research</a><a href="#mentorship">Mentorship</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#news">News</a><a href="#research">Research</a><a href="#consultancy">Consultancy</a><a href="#mentorship">Mentorship</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -735,17 +782,23 @@ footer a { color: #9fe3dc; }
   <div class="wrap hero-inner">
     <div class="hero-text">
       <div class="eyebrow">Academic & Research Profile</div>
-      <h2>Dr. Sharan Chandran M <span class="creds">PhD, Postdoc</span></h2>
+      <h1>Dr. Sharan Chandran M <span class="creds">PhD, Postdoc</span></h1>
       <strong>Recipient of the Erasmus+ International Credit Mobility (ICM) Grant, University of Cyprus</strong>
-
-</p>
       <p>Mechanical engineering academic and materials researcher working across sustainable composites, additive manufacturing, and student-led engineering innovation.</p>
       <p>Available for professional consultancy, educational consulting, academic mentoring, curriculum development, and collaborative R&D projects in advanced polymer composites, materials engineering, manufacturing, testing, and AI-enabled materials development.</p>
      <div class="actions">
         <a class="btn primary" href="#research">Explore Research</a>
         <a class="btn" href="#news">News &amp; Media</a>
+        <a class="btn" id="book-call" href="#" target="_blank" rel="noopener" hidden>Book a call</a>
         <a class="btn" href="#contact">Contact</a>
       </div>
+      <div class="audience"><span>I am a</span>
+        <a href="#mentorship">Prospective student</a><a href="#consultancy">Industry / client</a><a href="#publications">Researcher</a><a href="#testimonials">Student / alumnus</a>
+      </div>
+      <form class="newsletter" id="newsletter" method="post" target="_blank" hidden>
+        <label for="nl-email">Get research and mentoring updates by email</label>
+        <div><input type="email" id="nl-email" name="email" placeholder="Your email" required><button class="btn primary" type="submit">Subscribe</button></div>
+      </form>
     </div>
     <img src="Professional Office Headshot.png" alt="Dr. Sharan Chandran M" class="profile-photo">
   </div>
@@ -756,7 +809,7 @@ footer a { color: #9fe3dc; }
   <div class="two-col">
     <div>
       <p class="lead">With 15 years of experience in higher education, I bring together academic leadership, research, project supervision, industry collaboration, and student mentoring. My work focuses on developing innovative engineering solutions, advancing interdisciplinary research, and fostering meaningful connections between academia and industry.</p>
-      <p>My research focuses on polymer and natural-fibre composites, sustainable materials, additive manufacturing, interfacial characterisation, circular-economy strategies, and the application of artificial intelligence to materials research. I have also completed a postdoctoral fellowship at Universitas Gadjah Mada (UGM), Indonesia, where I pursued collaborative research and strengthened my international academic engagement..</p>
+      <p>My research focuses on polymer and natural-fibre composites, sustainable materials, additive manufacturing, interfacial characterisation, circular-economy strategies, and the application of artificial intelligence to materials research. I have also completed a postdoctoral fellowship at Universitas Gadjah Mada (UGM), Indonesia, where I pursued collaborative research and strengthened my international academic engagement.</p>
       <div><span class="pill">Sustainable composites</span><span class="pill">Materials engineering</span><span class="pill">Additive manufacturing</span><span class="pill">AI in materials research</span><span class="pill">Student innovation</span></div>
     </div>
     <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
@@ -895,6 +948,14 @@ footer a { color: #9fe3dc; }
     </div><!-- /professional-grid -->
   </div><!-- /container -->
 </section><!-- /professional-engagement -->
+<section id="consultancy">
+  <div class="section-head"><div class="kicker">Consultancy &amp; Collaboration</div><h2>Work with me</h2><p class="lead">Available for professional consultancy, educational consulting, academic mentoring, curriculum development, and collaborative R&amp;D projects.</p></div>
+  <div class="grid">
+    <div class="card"><h3>Industry &amp; consultancy</h3><p>Advanced polymer composites, materials engineering, manufacturing and testing. Past work includes a two-day Solid Mechanics training for 23 engineers at Siemens India (February 2025).</p><a class="more" href="#contact" data-enquiry="Consultancy">Request consultancy →</a></div>
+    <div class="card"><h3>Students &amp; PhD applicants</h3><p>Project guidance and PhD supervision in sustainable composites, additive manufacturing and AI-driven engineering design.</p><a class="more" href="#contact" data-enquiry="Student / PhD enquiry">Ask about supervision →</a></div>
+    <div class="card"><h3>Research collaboration</h3><p>Joint R&amp;D in natural-fibre composites, surface treatment, interface characterisation and AI-enabled materials development.</p><a class="more" href="#contact" data-enquiry="Research collaboration">Propose a collaboration →</a></div>
+  </div>
+</section>
 <section id="mentorship">
   <div class="section-head"><div class="kicker">Leadership & Mentorship</div><h2>Turning student ideas into engineering practice</h2></div>
   <div class="two-col">
@@ -902,12 +963,13 @@ footer a { color: #9fe3dc; }
       <h3>Student Chapter, GoTeam Team, Literature club & other extra-curricular activities</h3>
       <p>As SME student chapter coordinator and faculty advisor, I always support technical engagement, professional development, and hands-on learning.</p>
       <ul class="clean">
-        <li>Established SME chapter at VIT which is consistantly rated as the best chapter of SME in India through awards and funding of over $4000 from parent organisaion
+        <li>Established SME chapter at VIT which is consistently rated as the best chapter of SME in India through awards and funding of over $4000 from parent organisation</li>
         <li>Founded and Established Team Gati, a campus Go-Kart team.</li>
         <li>Founded and established the Malayalam Literary Association at VIT Vellore, leading its development into an award-winning student club recognised with the Best Club Award among 20 competing clubs.</li>
         <li>Faculty Organiser for VIT's technical and cultural festivals on multiple occasions, coordinating and supporting large-scale campus events and student activities.</li>
         </ul>
     </div>
+    <div class="right-column-stack">
     <div class="card">
       <h3>Teaching & Supervision</h3>
       <ul class="clean">
@@ -933,6 +995,7 @@ footer a { color: #9fe3dc; }
       </li>
     </ul>
   </div>
+</div>
   </div>
 </section>
 <section id="experience">
@@ -1125,6 +1188,18 @@ footer a { color: #9fe3dc; }
 </section>
 <section id="contact">
   <div class="section-head"><div class="kicker">Contact</div><h2>Connect with me</h2><p class="lead">For research collaboration, academic engagement, student projects, or professional enquiries.</p></div>
+  <div class="card" id="enquiry">
+    <h3>Send an enquiry</h3>
+    <form class="enq-form" id="enquiry-form">
+      <div class="full"><label for="enq-type">I am enquiring about</label>
+        <select id="enq-type"><option>Student / PhD enquiry</option><option>Consultancy</option><option>Research collaboration</option><option>Other</option></select></div>
+      <div><label for="enq-name">Name</label><input id="enq-name" type="text" maxlength="100" required autocomplete="name"></div>
+      <div><label for="enq-email">Email</label><input id="enq-email" type="email" maxlength="160" required autocomplete="email"></div>
+      <div class="full"><label for="enq-message">Message</label><textarea id="enq-message" minlength="10" maxlength="2000" required></textarea></div>
+      <div class="hp" aria-hidden="true"><input id="enq-website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="full"><button type="submit" id="enq-btn">Send enquiry</button><span id="enq-status" role="status" aria-live="polite"></span></div>
+    </form>
+  </div>
   <div class="grid">
     <div class="card">
   <h3>Email</h3>
@@ -1382,6 +1457,45 @@ footer a { color: #9fe3dc; }
   strip.appendChild(close);
 
   document.body.insertBefore(strip, document.body.firstChild);
+})();
+</script>
+<script>
+/* ===== SITE SETTINGS: fill these in; anything left empty stays hidden/uses defaults ===== */
+window.SITE_CONFIG = {
+  BOOKING_URL: "",        // e.g. https://calendly.com/yourname/20min  -> shows "Book a call"
+  NEWSLETTER_ACTION: "",  // subscribe-form URL from Buttondown / MailerLite -> shows email box
+  ENQUIRY_ENDPOINT: "",   // optional Worker URL; if empty, the form opens the visitor's email app
+  ENQUIRY_EMAIL: "sharancm2009@gmail.com"
+};
+(function () {
+  const C = window.SITE_CONFIG;
+  const $ = id => document.getElementById(id);
+  if (C.BOOKING_URL) { const b = $('book-call'); b.href = C.BOOKING_URL; b.hidden = false; }
+  if (C.NEWSLETTER_ACTION) { const n = $('newsletter'); n.action = C.NEWSLETTER_ACTION; n.hidden = false; }
+
+  document.querySelectorAll('[data-enquiry]').forEach(a =>
+    a.addEventListener('click', () => { $('enq-type').value = a.dataset.enquiry; }));
+
+  $('enquiry-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if ($('enq-website').value) return;                       // spam trap
+    const d = { type: $('enq-type').value, name: $('enq-name').value.trim(),
+                email: $('enq-email').value.trim(), message: $('enq-message').value.trim() };
+    const st = $('enq-status'), btn = $('enq-btn');
+    if (!C.ENQUIRY_ENDPOINT) {
+      location.href = 'mailto:' + C.ENQUIRY_EMAIL + '?subject=' + encodeURIComponent('[' + d.type + '] Enquiry from ' + d.name) +
+        '&body=' + encodeURIComponent(d.message + '\n\n' + d.name + ' <' + d.email + '>');
+      st.textContent = 'Opening your email app…';
+      return;
+    }
+    btn.disabled = true; st.textContent = 'Sending…';
+    try {
+      const r = await fetch(C.ENQUIRY_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+      if (!r.ok) throw new Error(r.status);
+      st.textContent = 'Thank you. Your enquiry has been sent.'; this.reset();
+    } catch (err) { st.textContent = 'Could not send. Please email me directly.'; }
+    btn.disabled = false;
+  });
 })();
 </script>
 </body>
