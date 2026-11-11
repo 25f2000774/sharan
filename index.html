@@ -751,14 +751,44 @@ footer a { color: #9fe3dc; }
 #enq-status { margin-left: .8rem; font-size: .9rem; color: #276444; }
 @media (max-width: 780px) { .audience { justify-content: center; } .newsletter { margin-inline: auto; } }
 @media (max-width: 640px) { .enq-form { grid-template-columns: 1fr; } .news-section { padding: 1.8rem 1rem .8rem; } }
-.mentor-cta{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;padding:1.6rem 1.8rem;border-radius:20px;color:#fff;background:linear-gradient(125deg,#10263f,#174d68 65%,#1b7b82);box-shadow:0 12px 30px #122f4533;position:relative;overflow:hidden}
-.mentor-cta::after{content:"";position:absolute;right:-60px;top:-70px;width:220px;height:220px;border:1px solid #ffffff26;border-radius:50%;box-shadow:0 0 0 30px #ffffff08}
-.mentor-cta>*{position:relative;z-index:1}
-.mentor-cta .tag{color:#9fe3dc;font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
-.mentor-cta h3{margin:.2rem 0 .4rem;color:#fff;font-size:1.35rem}
-.mentor-cta p{margin:0;max-width:560px;color:#e1eef3}
-.mentor-cta .chips span{display:inline-block;margin:.6rem .4rem 0 0;padding:.2rem .65rem;border-radius:999px;background:#ffffff1a;font-size:.8rem}
-.mentor-cta .btn{background:#a8eee4;color:var(--navy);border-color:#a8eee4}
+.mentor-cta {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  margin-top: 1rem;
+  padding: 2rem;
+  border-radius: 20px;
+  color: #fff;
+  background: linear-gradient(125deg, #10263f, #174d68 65%, #1b7b82);
+  box-shadow: 0 12px 30px #122f4533;
+}
+.mentor-cta::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -70px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid #ffffff26;
+  border-radius: 50%;
+  box-shadow: 0 0 0 30px #ffffff08;
+  pointer-events: none;
+}
+.mentor-cta > * { position: relative; z-index: 1; }
+.mentor-cta .tag { color: #9fe3dc; font-size: .75rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+.mentor-cta h3 { margin: .25rem 0 .5rem; color: #fff; font-size: 1.5rem; line-height: 1.25; }
+.mentor-cta p { margin: 0; max-width: 620px; color: #e1eef3; }
+.mentor-cta .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+.mentor-cta .chips span { padding: .25rem .75rem; border-radius: 999px; background: #ffffff1a; font-size: .82rem; }
+.mentor-cta .btn { background: #a8eee4; color: var(--navy); border-color: #a8eee4; white-space: nowrap; }
+
+@media (max-width: 720px) {
+  .mentor-cta { grid-template-columns: 1fr; padding: 1.5rem; }
+  .mentor-cta .btn { justify-self: start; }
+}
 </style>
 </head>
 <body>
@@ -964,14 +994,22 @@ footer a { color: #9fe3dc; }
     <div class="card"><h3>Research collaboration</h3><p>Joint R&amp;D in natural-fibre composites, surface treatment, interface characterisation and AI-enabled materials development.</p><a class="more" href="#contact" data-enquiry="Research collaboration">Propose a collaboration →</a></div>
   </div>
   <div class="mentor-cta">
-    <div>
-      <div class="tag">Ask the Mentor</div>
-      <h3>Stuck on a concept? Let's clear it up.</h3>
-      <p>Send your academic doubts in engineering mechanics, engineering drawing, basic mechanical engineering, mechanics of solids, machine design, FEA or composites, or ask for guidance on projects, research and career choices.</p>
-      <div class="chips"><span>Engineering Mechanics</span><span>Engineering Drawing</span><span>Basic Mechanical Engineering</span><span>Mechanics of Solids</span><span>Machine Design</span><span>CAD &amp; FEA</span><span>Projects &amp; Research</span></div>
+  <div>
+    <div class="tag">Ask the Mentor</div>
+    <h3>Stuck on a concept? Let's clear it up.</h3>
+    <p>Send your academic doubts in any of the subjects below, or ask for guidance on projects, research and career choices.</p>
+    <div class="chips">
+      <span>Engineering Mechanics</span>
+      <span>Engineering Drawing</span>
+      <span>Basic Mechanical Engineering</span>
+      <span>Mechanics of Solids</span>
+      <span>Machine Design</span>
+      <span>CAD &amp; FEA</span>
+      <span>Projects &amp; Research</span>
     </div>
-    <a class="btn" href="#contact" data-enquiry="Academic doubt / mentoring">Ask a question →</a>
   </div>
+  <a class="btn" href="#contact" data-enquiry="Academic doubt / mentoring">Ask a question →</a>
+</div>
 </section>
 <section id="mentorship">
   <div class="section-head"><div class="kicker">Leadership & Mentorship</div><h2>Turning student ideas into engineering practice</h2></div>
